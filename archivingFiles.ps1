@@ -19,4 +19,9 @@ if (destination folder does not exist)
    New-Item -Path $destinationFolder -ItemType Directory 
 }
 
+foreach ($object in $files)
+{
+    Move-Item -Path "$($object.FullName)" -Destination $destinationFolder
+}
+
 Write-Output "Done!!"
