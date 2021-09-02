@@ -14,7 +14,7 @@ $files = Get-ChildItem -path $sourceFolder | Where-Object {((Get-Date)-$_.creati
 $filesCount = $files.Length 
 Write-Host "Found $filesCount files in source directory!!"
 
-if (destination folder does not exist)
+if (!(Test-Path -Path $destinationFolder)) 
 {
    New-Item -Path $destinationFolder -ItemType Directory 
 }
