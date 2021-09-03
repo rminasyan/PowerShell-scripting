@@ -17,6 +17,7 @@ Write-Host "Found $filesCount files in source directory!!"
 if (!(Test-Path -Path $destinationFolder)) 
 {
    New-Item -Path $destinationFolder -ItemType Directory 
+   Write-Host "$destinationFolder creaeted" 
 }
 
 foreach ($object in $files)
