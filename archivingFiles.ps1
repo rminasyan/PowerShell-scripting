@@ -7,7 +7,10 @@ Param
     [int]$fileDate,
 
     [Parameter(Mandatory = $true, HelpMessage="New folder destination!!")]
-    [string]$destinationFolder
+    [string]$destinationFolder,
+
+    [Parameter(Mandatory = $true, HelpMessage="ZIP directory path!!")]
+    [string]$zipFolderDestination
 )
 
 $files = Get-ChildItem -path $sourceFolder | Where-Object {((Get-Date)-$_.creationTime).days -gt $fileDate} 
@@ -24,5 +27,7 @@ foreach ($object in $files)
 {
     Move-Item -Path "$($object.FullName)" -Destination $destinationFolder
 }
+
+Get-ChildItem -Path $destinationFolder | Compress-Archive -DestinationPath $zipFolderDestination
 
 Write-Output "Done!!"
