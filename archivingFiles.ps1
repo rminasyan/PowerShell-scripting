@@ -30,4 +30,6 @@ foreach ($object in $files)
 
 Get-ChildItem -Path $destinationFolder | Compress-Archive -DestinationPath $zipFolderDestination
 
+Remove-Item $destinationFolder
+
 Write-Output "Done!!"
